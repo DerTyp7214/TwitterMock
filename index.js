@@ -1,3 +1,5 @@
+// copyright by DerTyp7214 (Josua Lengwenath)
+
 const app = require('express')()
 const Twitter = require('twitter')
 const Jimp = require('jimp')
