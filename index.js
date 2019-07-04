@@ -17,6 +17,7 @@ app.get('/:id', (req, res) => {
             Jimp.read('./m.png')
                 .then(image => {
                     image.scale(.7)
+                        .brightness(-.2)
                     Jimp.loadFont(Jimp.FONT_SANS_64_WHITE)
                         .then(font => {
                             image.print(font, 15, 15, {
