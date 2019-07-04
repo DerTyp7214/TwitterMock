@@ -1,4 +1,4 @@
-put your twitter config in the `config.json`
+put your twitter credemtials and the port in the `config.json`
 
 Call the api with: `<host>:<port>/<tweet-id>`
 
