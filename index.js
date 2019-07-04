@@ -14,7 +14,7 @@ app.get('/:id', (req, res) => {
             res.statusCode = response.statusCode
             res.send(response)
         } else {
-            Jimp.read('./mock.png')
+            Jimp.read('./m.png')
                 .then(image => {
                     Jimp.loadFont(Jimp.FONT_SANS_128_WHITE)
                         .then(font => {
