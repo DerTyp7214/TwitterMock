@@ -16,20 +16,21 @@ app.get('/:id', (req, res) => {
         } else {
             Jimp.read('./m.png')
                 .then(image => {
-                    Jimp.loadFont(Jimp.FONT_SANS_128_WHITE)
+                    image.scale(.7)
+                    Jimp.loadFont(Jimp.FONT_SANS_64_WHITE)
                         .then(font => {
-                            image.print(font, 0, 0, {
+                            image.print(font, 15, 15, {
                                 text: mock(JSON.parse(response.body).full_text),
                                 alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
                                 alignmentY: Jimp.VERTICAL_ALIGN_TOP
-                            }, image.getWidth(), image.getHeight())
+                            }, image.getWidth() - 35, image.getHeight() - 35)
                             Jimp.loadFont(Jimp.FONT_SANS_16_WHITE)
                                 .then(miniFont => {
                                     image.print(miniFont, 0, 0, {
                                         text: JSON.parse(response.body).user.name,
                                         alignmentX: Jimp.HORIZONTAL_ALIGN_RIGHT,
                                         alignmentY: Jimp.VERTICAL_ALIGN_BOTTOM
-                                    }, image.getWidth(), image.getHeight())
+                                    }, image.getWidth() - 2, image.getHeight() - 2)
                                     image.getBase64Async(image._originalMime)
                                         .then(base64 => {
                                             const img = Buffer.from(base64.replace('data:image/png;base64,', ''), 'base64')
