@@ -8,8 +8,8 @@ const twitterClient = new Twitter(config)
 
 const mock = text => text.split('').map(c => Math.random() >= 0.5 ? c.toUpperCase() : c.toLowerCase()).join('')
 
-app.get('/:id', (req, res) => {
-    twitterClient.get('statuses/show', { id: req.params.id, tweet_mode: 'extended' }, function(error, tweets, response) {
+app.get('/alla/api/:id', (req, res) => {
+    twitterClient.get('statuses/show', { id: req.params.id, tweet_mode: 'extended' }, function (error, tweets, response) {
         Jimp.read('./m.png')
             .then(image => {
                 image.scale(.7)
@@ -33,7 +33,7 @@ app.get('/:id', (req, res) => {
                 Jimp.loadFont(fontStyle)
                     .then(font => {
                         image.print(font, 15, 15, text, image.getWidth() - 35, image.getHeight() - 35)
-                        Jimp.loadFont(Jimp.FONT_SANS_16_WHITE)
+                        Jimp.loadFont(Jimp.FONT_SANS_32_WHITE)
                             .then(miniFont => {
                                 image.print(miniFont, 0, 0, {
                                     text: name,
@@ -45,7 +45,8 @@ app.get('/:id', (req, res) => {
                                         const img = Buffer.from(base64.replace('data:image/png;base64,', ''), 'base64')
                                         res.writeHead(200, {
                                             'Content-Type': 'image/png',
-                                            'Content-Length': img.length
+                                            'Content-Length': img.length,
+                                            'Access-Control-Allow-Origin': '*'
                                         })
                                         res.end(img)
                                     })
