@@ -45,8 +45,7 @@ app.get('/alla/api/:id', (req, res) => {
                                         const img = Buffer.from(base64.replace('data:image/png;base64,', ''), 'base64')
                                         res.writeHead(200, {
                                             'Content-Type': 'image/png',
-                                            'Content-Length': img.length,
-                                            'Access-Control-Allow-Origin': '*'
+                                            'Content-Length': img.length
                                         })
                                         res.end(img)
                                     })
