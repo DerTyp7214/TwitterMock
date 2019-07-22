@@ -33,7 +33,7 @@ app.get('/alla/api/:id', (req, res) => {
                 Jimp.loadFont(fontStyle)
                     .then(font => {
                         image.print(font, 15, 15, text, image.getWidth() - 35, image.getHeight() - 35)
-                        Jimp.loadFont(Jimp.FONT_SANS_32_WHITE)
+                        Jimp.loadFont(Jimp.FONT_SANS_16_WHITE)
                             .then(miniFont => {
                                 image.print(miniFont, 0, 0, {
                                     text: name,
